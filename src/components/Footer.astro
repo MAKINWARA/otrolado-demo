@@ -1,0 +1,85 @@
+---
+import EmailSubscription from "./ui/EmailSubscription.astro"
+import HomeHeader from "./ui/HomeHeader.astro"
+import SocialMedia from "./ui/SocialMedia.astro"
+---
+
+<footer class="py-8 text-white">
+	<HomeHeader text="subscríbete">oldc</HomeHeader>
+	<div class="mx-auto w-[95%] pb-6 pt-6 sm:w-[70%]">
+		<p class="max-w-[650px] leading-9 text-white">Únete a nuestra lista de contactos.</p>
+	</div>
+	<EmailSubscription />
+
+	<address
+		class="mx-auto grid w-[95%] max-w-[1200px] grid-cols-[repeat(2,fit-content(200px))] justify-between gap-y-8 pb-5 pt-8 text-sm not-italic sm:w-[70%] lg:grid-cols-[repeat(4,fit-content(100%))] lg:pt-14"
+	>
+		<article>
+			<h4 class="uppercase">Síguenos</h4>
+			<SocialMedia />
+		</article>
+		<article>
+			<h5 class="mb-1 pb-4 uppercase">dirección</h5>
+			<a
+				class="inline-block transition-colors hover:text-clementine-500"
+				rel="nofollow noopener noreferrer"
+				href="https://maps.app.goo.gl/dScxzzFqbBT8EXae9"
+				target="_blank"
+			>
+				<p>458 P.º de Martí,<br /> La Habana, Cuba</p>
+			</a>
+		</article>
+		<article>
+			<h5 class="mb-1 pb-4 uppercase">Contactos</h5>
+			<div class="flex flex-col gap-1">
+				<a
+					class="inline-block w-fit transition-colors hover:text-clementine-500"
+					href="tel:+5358275440">(+53) 5827 5440</a
+				>
+				<a
+					class="inline-block w-fit transition-colors hover:text-clementine-500"
+					href="tel:+447394080082">(+44) 7394 080082</a
+				>
+				<a
+					class="inline-block transition-colors hover:text-clementine-500"
+					href="mailto:info@otroladodancecompany.com">info@otroladodancecompany.com</a
+				>
+			</div>
+		</article>
+		<article class="hidden flex-col gap-2 sm:flex">
+			<a
+				class="uppercase transition-colors hover:text-clementine-500 focus:text-clementine-500"
+				href="">noticias</a
+			>
+			<a
+				class="uppercase transition-colors hover:text-clementine-500 focus:text-clementine-500"
+				href="/sobre-nosotros">sobre nosotros</a
+			>
+			<a
+				class="uppercase transition-colors hover:text-clementine-500 focus:text-clementine-500"
+				href="/producciones">producciones</a
+			>
+			<a
+				class="uppercase transition-colors hover:text-clementine-500 focus:text-clementine-500"
+				href="/contact">apóyanos</a
+			>
+		</article>
+	</address>
+
+	<p class="mx-auto w-[95%] max-w-[1200px] text-xs sm:w-[70%]">
+		Create by <a
+			target="_blank"
+			rel="noopener noreferrer"
+			class="underline_animation after:bg-clementine-500 hover:text-clementine-500"
+			href="https://www.linkedin.com/in/luis-angel-garrido-88186b251/">MAKINWARA©</a
+		> 2024. All rights reserved
+	</p>
+</footer>
+
+<style>
+	footer {
+		background-position: 0 -140px;
+		background-image: linear-gradient(black 20%, transparent 50%, black 100%),
+			url("https://cdn.otroladodancecompany.com/landing/footer.webp");
+	}
+</style>

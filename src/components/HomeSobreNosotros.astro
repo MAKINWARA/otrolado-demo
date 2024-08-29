@@ -1,0 +1,44 @@
+---
+import HomeHeader from "./ui/HomeHeader.astro"
+---
+
+<section class="pt-20">
+	<HomeHeader text="sobre" orange_text="nosotros" white>oldc</HomeHeader>
+	<div class="mx-auto w-[95%] py-10 sm:pb-0 lg:w-[80%]">
+		<p class="max-w-[650px] leading-9 text-white lg:text-balance">
+			Por más de 5 años OTROLADO DANCE COMPANY se ha establecido como una de las compañías cubanas
+			más singulares y reveladoras. Nuestra visión: retar los límites del cuerpo y la mente para
+			crear obras de arte, tan maravillosas e impredecibles como la vida misma.
+		</p>
+	</div>
+	<figure class="relative">
+		<picture>
+			<source
+				srcset="https://cdn.otroladodancecompany.com/about_us/about_us_portada_min.webp"
+				media="(min-width: 640px)"
+			/>
+			<img
+				class="w-full object-cover lg:h-[650px] lg:object-[center_-320px] xl:h-[870px] 2xl:object-[center_-370px]"
+				src="https://cdn.otroladodancecompany.com/landing/about_mobile.webp"
+				style={`
+					mask-image: linear-gradient(black 70%, transparent 100%);
+					@media (min-width: 640px) {
+						mask-image: linear-gradient(black 70%, transparent 100%);
+					}
+					`}
+				alt="description"
+			/>
+		</picture>
+		<figcaption class="bottom-10 right-[5%] pt-10 sm:pt-0 lg:absolute">
+			<cite
+				class="mx-auto block w-[95%] leading-9 text-white sm:text-balance lg:mx-0 lg:w-full lg:max-w-[550px]"
+			>
+				Teníamos la necesidad de crear, de soñar, de experimentar y disfrutar el arte más allá de lo
+				establecido, de lo que se entendía como correcto. Queríamos desafiarnos, tomar el riesgo de
+				encontrarnos a nosotros mismos en la búsqueda de nuevas realidades, en el disfrute que
+				proporcionaba a un grupo de amigos, vivir al límite por defender sus pasiones y anhelos.
+			</cite>
+			<p class="w-[95%] pt-4 text-right text-white">Norge Cedeño</p>
+		</figcaption>
+	</figure>
+</section>

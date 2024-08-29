@@ -1,0 +1,24 @@
+---
+import { GET } from "@/pages/api/critics.json"
+import type { CRITICS } from "@/types/schemas"
+
+const data = await GET(Astro)
+const critics: CRITICS[] = await data.json()
+---
+
+<section class="mx-auto w-[95%] sm:w-[85%]">
+	<h3 class="text-xl font-semibold">¿QUÉ OPINA LA CRÍTICA SOBRE NOSOTROS?</h3>
+	<div class="grid gap-8 pt-8 sm:grid-cols-2">
+		{
+			critics &&
+				critics.map(({ author, media, quote }) => (
+					<span class="flex flex-col items-end justify-between border-b border-alto-900 pb-4">
+						<p>{quote}</p>
+						<cite class="pt-4 font-semibold">
+							{author}, {media}
+						</cite>
+					</span>
+				))
+		}
+	</div>
+</section>

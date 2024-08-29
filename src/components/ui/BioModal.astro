@@ -1,0 +1,45 @@
+---
+interface Props {
+	name: string
+	description: string
+	trigger: string
+	image: string
+	position: string[]
+}
+
+const { name, description, trigger, image, position } = Astro.props
+---
+
+<dialog
+	id={`${trigger}-modal`}
+	aria-hidden="true"
+	class="fixed z-50 h-screen max-h-full w-screen max-w-full animate-fade overflow-y-auto overflow-x-hidden bg-transparent py-5 backdrop-blur-md animate-duration-500 md:inset-0"
+>
+	<div
+		class="mx-auto flex h-full w-[95%] max-w-[1100px] animate-fade-right flex-col justify-between overflow-y-scroll bg-alto-100 lg:flex-row lg:overflow-y-auto"
+	>
+		<figure class="w-full">
+			<img loading="lazy" class="h-full w-full object-cover" src={image} alt="" />
+		</figure>
+		<div
+			class="w-full p-8 lg:overflow-scroll"
+			style={`
+			mask-image: linear-gradient(black 90%, transparent 100%);
+			`}
+		>
+			<div class="mb-7 border-b-2 border-alto-900 pb-2">
+				<h4 class="pb-2 text-xl font-semibold text-clementine-500 sm:text-3xl">
+					{name}
+				</h4>
+				<cite class="text-sm uppercase">{position.join(" / ")}</cite>
+			</div>
+			<p class="text-balance pb-9">{description}</p>
+		</div>
+		<button
+			class="absolute right-8 top-6 text-2xl font-semibold text-white focus-visible:outline-none lg:text-black"
+			id={`${trigger}-modal-close`}
+		>
+			X
+		</button>
+	</div>
+</dialog>

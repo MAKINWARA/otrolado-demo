@@ -1,0 +1,44 @@
+---
+import OpenGraph from "./ui/OpenGraph.astro"
+interface OPENGRAPH {
+	title: string
+	description: string
+	image: string
+}
+
+interface Props {
+	og: OPENGRAPH
+	canonical?: string
+	title: string
+}
+
+const { og, canonical, title } = Astro.props
+
+const determineCanonicalURL = () => {
+	if (Astro.url.host.includes("vercel.app")) return "https://otrolado.vercel.app/"
+	if (Astro.url.host.includes("localhost")) return "http://localhost:4321"
+	return canonical || Astro.url.pathname
+}
+
+const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
+---
+
+<title>{title}</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="preconnect" href="https://cdn.otroladodancecompany.com" />
+<link rel="icon" href="/favicon.ico" type="imagen/x-icon" />
+<link rel="canonical" href={canonicalURL} />
+<meta
+	name="keywords"
+	content="Cuba Danza, Compañía de danza, Espectáculo de danza, Arte escénico, Bailarines, Coreografía"
+/>
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<link rel="apple-touch-icon" href="/icons/apple-icon.png" />
+
+<meta name="description" content={og.description} />
+<meta name="msapplication-config" content="/browserconfig.xml" />
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<OpenGraph og={og} />

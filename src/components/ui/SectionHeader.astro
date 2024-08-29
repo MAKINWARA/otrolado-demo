@@ -1,0 +1,34 @@
+---
+interface Props {
+	black?: string
+	clementine: string
+	dashed?: boolean
+}
+
+const { black, clementine, dashed } = Astro.props
+---
+
+<div class={`relative  mx-auto overflow-hidden sm:min-h-[160px]`}>
+	<span
+		class={`absolute uppercase tracking-tight left-0 top-0 text-[160px] text-alto-300 z-0 font-extrabold leading-[.9] opacity-45`}
+	>
+		<slot />
+	</span>
+
+	<div
+		class="relative mx-auto w-[95%] items-center gap-56 pt-36 lg:ml-64 lg:flex lg:w-full lg:pt-14"
+	>
+		<div class="max-w-[600px]">
+			<h2 class={`text-clementine-500 text-3xl font-semibold uppercase`}>
+				{
+					dashed && (
+						<span class="text-black" aria-hidden>
+							_
+						</span>
+					)
+				}<span class="text-black">{black}</span>
+				{clementine}
+			</h2>
+		</div>
+	</div>
+</div>

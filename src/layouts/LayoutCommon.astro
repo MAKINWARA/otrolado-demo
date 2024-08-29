@@ -1,0 +1,93 @@
+---
+interface Props {
+	title: string
+	background?: string
+	canonical?: string
+}
+
+const { title, background, canonical }: Props = Astro.props
+
+// Supports weights 400-800
+import "@fontsource/montserrat/400.css"
+import "@fontsource/montserrat/500.css"
+import "@fontsource/montserrat/600.css"
+import "@fontsource/montserrat/700.css"
+import "@fontsource/montserrat/800.css"
+
+import SEO from "@/components/SEO.astro"
+import { ViewTransitions } from "astro:transitions"
+
+import "swiper/css/bundle"
+
+const openGraphData = {
+	title: "OtroLado Dance Company",
+	description:
+		"OtroLado compañía Cubana de danza contemporánea, referente internacional de creatividad y Arte escénico que te comparte piezas de excelencia danzaría",
+	image: "https://cdn.otroladodancecompany.com/team/norge_thais.webp",
+}
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<SEO og={openGraphData} canonical={canonical} title={title} />
+		<slot name="preload" />
+		<ViewTransitions />
+	</head>
+	<body class={`${background}`}>
+		<slot />
+
+		<style is:global>
+			body {
+				font-family: "Montserrat", sans-serif;
+
+				/* max-width: 430px; */
+				margin: 0 auto;
+				scroll-behavior: smooth;
+			}
+
+			.underline_animation {
+				display: inline-block;
+				position: relative;
+			}
+
+			.underline_animation::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				transform: scaleX(0);
+				height: 2px;
+				bottom: 0;
+				left: 0;
+				transform-origin: bottom right;
+				transition: transform 0.25s ease-out;
+			}
+
+			.underline_animation:hover::after,
+			.underline_animation:focus:after {
+				cursor: pointer;
+				transform: scaleX(1);
+				transform-origin: bottom left;
+			}
+
+			.swiper-pagination-bullet {
+				width: 1rem;
+				height: 1rem;
+				background-color: #e17226;
+			}
+
+			.swiper-button-prev,
+			.swiper-button-next {
+				color: #fdf7ef;
+			}
+
+			.swiper-button-next {
+				right: var(--swiper-navigation-sides-offset, 20px);
+			}
+
+			.swiper-button-prev {
+				left: var(--swiper-navigation-sides-offset, 20px);
+			}
+		</style>
+	</body>
+</html>

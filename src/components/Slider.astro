@@ -1,0 +1,74 @@
+---
+interface SliderInfo {
+	id: number
+	src: string
+	style?: string
+	title?: string
+	description?: string
+}
+
+type Props = {
+	SliderInfo: SliderInfo[]
+	navigation?: string
+	style?: string
+}
+
+const { SliderInfo, navigation, style } = Astro.props
+---
+
+<section class="swiper" data-navigation={navigation}>
+	<div class="swiper-wrapper">
+		{
+			SliderInfo.map(({ src, title, description }: SliderInfo) => (
+				<article class="swiper-slide">
+					<figure class={style}>
+						<img class="h-full w-full object-cover" src={src} alt="" />
+					</figure>
+					{title && (
+						<figcaption class="mx-auto w-[95%] px-4 py-10">
+							<h3 class="pb-4 text-3xl font-bold text-clementine-500">{title}</h3>
+							<p class="leading-8">{description}</p>
+						</figcaption>
+					)}
+				</article>
+			))
+		}
+	</div>
+	<div aria-disabled class="swiper-pagination"></div>
+	<div aria-disabled class="swiper-button-next"></div>
+	<div aria-disabled class="swiper-button-prev"></div>
+</section>
+
+<script>
+	import Swiper from "swiper"
+	import { Mousewheel, Navigation, Pagination } from "swiper/modules"
+	import type { SwiperOptions } from "swiper/types"
+
+	document.addEventListener("astro:page-load", () => {
+		const section = document.querySelector(".swiper") as HTMLElement
+		const { navigation } = section.dataset
+
+		const swiperParams: SwiperOptions = {
+			modules: [Navigation, Pagination, Mousewheel],
+			slidesPerView: 1,
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+				dynamicBullets: true,
+			},
+			navigation: {
+				enabled: Boolean(navigation) ?? false,
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+			mousewheel: {
+				forceToAxis: true,
+				sensitivity: 0,
+				thresholdTime: 800,
+			},
+		}
+
+		const swiper = new Swiper(".swiper", swiperParams)
+		swiper.init()
+	})
+</script>

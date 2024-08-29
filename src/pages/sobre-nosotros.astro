@@ -1,0 +1,66 @@
+---
+import Critica from "@/components/ui/Critica.astro"
+import HomeHeader from "@/components/ui/HomeHeader.astro"
+import TeamGrid from "../components/ui/TeamGrid.astro"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="OtroLado || Sobre Nosotros" textColor="text-black" bgColor="bg-white/45">
+	<main class="bg-white pt-10">
+		<section class="pt-16">
+			<HomeHeader text="sobre" orange_text="nosotros">oldc</HomeHeader>
+			<figure class="h-96 w-full lg:h-[750px]">
+				<img
+					src="https://cdn.otroladodancecompany.com/about_us/about_us_portada.webp"
+					alt=""
+					class="h-full w-full object-cover lg:object-[center_-90px]"
+				/>
+			</figure>
+			<div class="mx-auto w-[95%] py-8 sm:w-[85%] lg:py-20">
+				<p class="text-base/loose font-medium uppercase sm:max-w-[700px]">
+					POR MÁS DE 5 AÑOS OTROLADO DANCE COMPANY SE HA ESTABLECIDO COMO UNA DE LAS COMPAÑÍAS
+					CUBANAS MÁS SINGULARES Y REVELADORAS. NUESTRA VISIÓN: RETAR LOS LÍMITES DEL CUERPO Y LA
+					MENTE PARA CREAR OBRAS DE ARTE TAN MARAVILLOSAS E IMPREDECIBLES COMO LA VIDA MISMA.
+				</p>
+				<div class="gap-8 pt-8 sm:mx-auto sm:flex lg:w-[80%] lg:pt-20 2xl:w-[75%]">
+					<p>
+						En julio del 2018, un pequeño grupo de jóvenes artistas se dio cita en un estudio de La
+						Habana, Cuba, para trabajar en un nuevo proyecto. No podían ser más singulares y
+						diferentes, pero les unían talentos forjados en la curiosidad y la ambición artística,
+						un compromiso sin límites con la creación y el deseo de transformar la danza cubana.
+						Comenzó entonces un período de investigación que desembocó en las primeras piezas
+						creadas para Thais Suárez y Niosbel González, quienes liderados por el bailarín y
+						coreógrafo Norge Cedeño, desafiaban las formas de pensar y hacer la danza en la isla.
+						Estas primeras producciones sentaron las bases para una colaboración dinámica, que
+						desembocó meses después en la fundación de OtroLado Dance Company. Motivados a
+						amplificar la esencia cultural de su nación, de su gente, y crecer en el aprendizaje por
+						la colaboración con los mejores artistas de cada disciplina del arte, comenzó un viaje
+						sin precedentes que no deja de sorprendernos hasta hoy.
+					</p>
+					<p class="pt-4 lg:pt-0">
+						Las reglas eran simples: tomar riesgos, pensar en grande y desafiar nuestros propios
+						límites para redescubrirnos en todo aquello entendido por arte. Para hacerlo posible fue
+						necesario poner a prueba todo conocimiento heredado, abrazar la incertidumbre,
+						sorprenderse para sorprender; trascender fórmulas creativas y exponerse a una búsqueda
+						incesante, donde cada día representa una oportunidad para evolucionar. Nació una danza
+						de detalles, virtuosa y competitiva al más alto nivel. Una danza seductora, emocionante,
+						que surge en lo más profundo de las entrañas, capaz de amplificar la esencia del
+						espíritu humano. Vio la luz una danza híbrida, llena de la sinuosidad inherente del
+						folklore cubano y toda la belleza y capacidad de las más variadas formas de movilidad,
+						pero sobre todo nació una visión capaz de trascender la mera danza para crear universos
+						únicos para la audiencia.
+					</p>
+				</div>
+			</div>
+		</section>
+		<section>
+			<HomeHeader text="nuestro" orange_text="equipo">equipo</HomeHeader>
+			<div class="pt-20">
+				<TeamGrid />
+			</div>
+		</section>
+		<section class="py-10 lg:py-20">
+			<Critica />
+		</section>
+	</main>
+</Layout>

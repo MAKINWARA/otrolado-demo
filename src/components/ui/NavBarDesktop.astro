@@ -1,0 +1,57 @@
+---
+import Logo from "./Logo.astro"
+
+const { textColor, bgColor } = Astro.props
+---
+
+<section
+	class={`hidden fixed lg:flex transition-transform duration-500 justify-between ${bgColor} w-full top-0 z-50 ${textColor}`}
+>
+	<Logo class="ml-2 h-auto w-44" />
+	<nav class="pr-8">
+		<ul class="flex h-full items-center justify-evenly gap-8 text-sm uppercase">
+			<li class="hover:text-clementine-500">
+				<a href="/">Home</a>
+			</li>
+			<li class="pointer-events-none line-through hover:text-clementine-500">
+				<a href="/noticias">Noticias</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/sobre-nosotros">Sobre Nosotros</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/producciones">Producciones</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/contact">Apóyanos</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const navbar = document.querySelector("section")
+		let isScrolling: NodeJS.Timeout
+		window.addEventListener("scroll", () => {
+			window.clearTimeout(isScrolling)
+			if (window.scrollY > 100 && navbar) navbar.classList.remove("-translate-y-full")
+
+			isScrolling = setTimeout(() => {
+				if (window.scrollY > 100 && navbar) navbar.classList.add("-translate-y-full")
+			}, 1500)
+		})
+		if (navbar) {
+			navbar.onmouseover = () => {
+				window.clearTimeout(isScrolling)
+				if (navbar) navbar.classList.remove("-translate-y-full")
+			}
+
+			navbar.onmouseleave = () => {
+				isScrolling = setTimeout(() => {
+					if (navbar) navbar.classList.add("-translate-y-full")
+				}, 1500)
+			}
+		}
+	})
+</script>

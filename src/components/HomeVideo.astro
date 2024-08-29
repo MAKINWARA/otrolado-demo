@@ -1,0 +1,50 @@
+<section class="relative animate-fade-up">
+	<figure id="figure" class=`w-full h-screen`>
+		<video
+			src="https://cdn.otroladodancecompany.com/video/Video.webm"
+			autoplay
+			playsinline
+			loop
+			muted
+			class="h-full w-full object-cover"></video>
+	</figure>
+	<div class="absolute bottom-10 left-3 sm:bottom-[30%] sm:left-44">
+		<p class="text-xl font-bold uppercase text-white">Bienvenido a</p>
+		<h2 translate="no" class="text-3xl font-bold uppercase text-clementine-500">
+			OtroLado <br /> Dance
+		</h2>
+		<a
+			href="/producciones"
+			class="underline_animation mt-8 text-sm font-semibold uppercase text-white transition-colors after:bg-clementine-500 hover:text-clementine-500"
+			>Ver Más<svg
+				class="-mt-1 ml-1 inline-block fill-current"
+				xmlns="http://www.w3.org/2000/svg"
+				height="22"
+				viewBox="0 -960 960 960"
+				width="22"
+				><path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"></path></svg
+			></a
+		>
+	</div>
+</section>
+<script>
+	const iphone = /Iphone/i
+
+	const deviceType = window.navigator.userAgent
+	const height = window.innerHeight
+
+	if (iphone.test(deviceType)) {
+		const image = document.getElementById("figure")
+		if (image) {
+			console.log(height)
+			image.classList.remove("h-screen")
+			image.style.height = `${height}px`
+		}
+	}
+</script>
+
+<style>
+	video {
+		mask-image: linear-gradient(black 80%, transparent 100%);
+	}
+</style>

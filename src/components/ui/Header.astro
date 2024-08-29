@@ -1,0 +1,53 @@
+---
+interface HeroProps {
+	title?: string
+	text?: string
+	waterMark?: string
+	waterMarkColor?: string
+	linkText?: string
+	linkColor?: string
+}
+
+const { title, waterMarkColor, text, waterMark, linkText, linkColor }: HeroProps = Astro.props
+---
+
+<div class={`relative sm:w-[85%] mx-auto overflow-hidden sm:min-h-[140px]`}>
+	{
+		waterMark && (
+			<span
+				class={`absolute left-0 top-0 select-none text-[160px] ${waterMarkColor} z-0 font-bold leading-[.9] opacity-45`}
+			>
+				{waterMark}
+			</span>
+		)
+	}
+	<div
+		class="relative mx-auto w-[95%] items-center gap-56 pt-36 lg:ml-32 lg:w-full lg:pt-14 xl:flex"
+	>
+		<div class="max-w-[600px]">
+			{title && <h2 class={`text-4xl font-semibold uppercase text-clementine-500`}>{title}</h2>}
+
+			{text && <p class="my-4 max-w-[600px] text-wrap leading-8 lg:my-0 lg:mt-20">{text}</p>}
+		</div>
+		{
+			linkText && (
+				<aside class="my-8 font-semibold sm:pt-14">
+					<span>
+						<a class={`underline_animation uppercase after:${linkColor ?? "bg-white"} `} href="#">
+							{linkText}
+							<svg
+								class="-mt-1 ml-1 inline-block fill-current"
+								xmlns="http://www.w3.org/2000/svg"
+								height="22"
+								viewBox="0 -960 960 960"
+								width="22"
+							>
+								<path d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z" />
+							</svg>
+						</a>
+					</span>
+				</aside>
+			)
+		}
+	</div>
+</div>

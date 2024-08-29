@@ -1,0 +1,21 @@
+---
+import Footer from "@/components/Footer.astro"
+import NavBar from "@/components/NavBar.astro"
+import NavBarDesktop from "@/components/ui/NavBarDesktop.astro"
+import Toast from "@/components/ui/Toast.astro"
+import LayoutCommon from "./LayoutCommon.astro"
+
+const { title, textColor, bgColor, background } = Astro.props
+---
+
+<LayoutCommon
+	title={title}
+	background={background}
+	canonical="https://www.otroladodancecompany.com/"
+>
+	<NavBar />
+	<NavBarDesktop textColor={textColor} bgColor={bgColor} />
+	<slot />
+	<Toast />
+	<Footer />
+</LayoutCommon>

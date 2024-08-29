@@ -1,0 +1,76 @@
+---
+import BioModal from "@/components/ui/BioModal.astro"
+import { GET } from "@/pages/api/dancers.json"
+import type { Dancer } from "@/types/schemas"
+
+const data = await GET(Astro)
+const dancers_bio: Dancer[] = await data.json()
+---
+
+<section class="mx-auto grid w-[95%] grid-cols-1 gap-10 sm:grid-cols-5">
+	<img
+		src="https://cdn.otroladodancecompany.com/team/norge_thais.webp"
+		alt=""
+		class="col-span-1 row-span-1 h-full w-full bg-black object-cover sm:col-span-2 sm:row-span-2"
+		loading="lazy"
+	/>
+
+	{
+		dancers_bio &&
+			dancers_bio.map(
+				({ name, short_name, position, bio, dancer_trigger, profile_image, thumbnail_image }) => {
+					return (
+						<>
+							<figure class="group relative animate-fade-up overflow-hidden transition-shadow duration-500 hover:ring-4 hover:ring-clementine-500">
+								<img
+									data-modal-target={`${dancer_trigger}-modal`}
+									class="h-full w-full cursor-pointer bg-black object-cover saturate-0 transition duration-500 group-hover:saturate-150"
+									loading="lazy"
+									src={thumbnail_image}
+									alt="2"
+								/>
+								<div class="pointer-events-none absolute left-0 top-0 hidden h-full w-full translate-y-full cursor-pointer items-end justify-center bg-alto-500/5 pb-6 text-xl text-clementine-100 transition duration-700 ease-in-out group-hover:translate-y-0 sm:flex">
+									{short_name}
+								</div>
+							</figure>
+							<BioModal
+								name={name}
+								description={bio}
+								trigger={dancer_trigger}
+								image={profile_image}
+								position={position}
+							/>
+						</>
+					)
+				}
+			)
+	}
+</section>
+
+<script>
+	import { $, $$ } from "@/lib/dom-selector"
+
+	document.addEventListener("astro:page-load", () => {
+		const modals = $$(`[data-modal-target]`)
+
+		modals.forEach((modal) => {
+			const target = modal.dataset.modalTarget
+			const dialog = $(`#${target}`) as HTMLDialogElement
+			const close = $(`#${target}-close`) as HTMLButtonElement
+
+			modal.addEventListener("click", () => {
+				dialog.showModal()
+			})
+
+			close.addEventListener("click", () => {
+				dialog.close()
+			})
+		})
+	})
+</script>
+
+<style>
+	body:has(dialog[open]) {
+		overflow: hidden;
+	}
+</style>

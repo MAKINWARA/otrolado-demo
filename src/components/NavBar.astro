@@ -1,0 +1,106 @@
+---
+import Logo from "./ui/Logo.astro"
+import SocialMedia from "./ui/SocialMedia.astro"
+---
+
+<nav id="mobil_nav_menu" class="fixed top-0 z-50 w-full bg-black/85 lg:hidden">
+	<button class="group relative">
+		<div
+			class="relative flex h-[50px] w-[50px] transform items-center justify-center overflow-hidden rounded-full bg-transparent shadow-md ring-0 ring-gray-300 ring-opacity-30 transition duration-200"
+		>
+			<div
+				class="flex h-[20px] w-[20px] origin-center transform flex-col justify-between overflow-hidden transition duration-300"
+			>
+				<div
+					data-name="open_button_nav_bar"
+					class="h-[2px] w-7 origin-left transform bg-white transition duration-300"
+				>
+				</div>
+				<div
+					data-name="open_button_nav_bar"
+					class="h-[2px] w-7 transform rounded bg-white transition delay-75 duration-300"
+				>
+				</div>
+				<div
+					data-name="open_button_nav_bar"
+					class="h-[2px] w-7 origin-left transform bg-white transition delay-150 duration-300"
+				>
+				</div>
+
+				<div
+					id="close_button_nav_bar"
+					class="absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition duration-500"
+				>
+					<div
+						data-name="x_button_nav_bar"
+						class="absolute h-[2px] w-5 rotate-0 transform bg-clementine-500 transition delay-300 duration-500"
+					>
+					</div>
+					<div
+						data-name="x_button_nav_bar"
+						class="absolute h-[2px] w-5 -rotate-0 transform bg-clementine-500 transition delay-300 duration-500"
+					>
+					</div>
+				</div>
+			</div>
+		</div>
+	</button>
+	<div
+		id="mobile_nav_bar"
+		class="hidden h-full origin-left animate-fade-right text-white transition animate-duration-[1000ms] animate-ease-out"
+	>
+		<ul class="flex h-full max-h-[650px] flex-col items-center justify-between uppercase">
+			<li>
+				<Logo class={`text-white h-full w-40`} />
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/">Home</a>
+			</li>
+			<li class="pointer-events-none hover:text-clementine-500">
+				<a href="/noticias">01_Noticias</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/sobre-nosotros">02_Sobre Nosotros</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/producciones">03_Producciones</a>
+			</li>
+			<li class="hover:text-clementine-500">
+				<a href="/contact">Apóyanos</a>
+			</li>
+			<li>
+				<SocialMedia />
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const handleClick = () => {
+			const $mobile_nav_bar = document.getElementById("mobile_nav_bar")!
+			const $mobile_nav_menu = document.getElementById("mobil_nav_menu")!
+			const $open_button_nav_bar = document.querySelectorAll('[data-name="open_button_nav_bar"]')!
+			const $close_button_nav_bar = document.getElementById("close_button_nav_bar")!
+			const $x_button_nav_bar = document.querySelectorAll('[data-name="x_button_nav_bar"]')!
+
+			$mobile_nav_bar.classList.toggle("hidden")
+			$mobile_nav_menu.classList.toggle("h-svh")
+			$open_button_nav_bar.forEach((element) => {
+				element.classList.toggle("translate-x-10")
+			})
+			$close_button_nav_bar.classList.toggle("w-12")
+			$close_button_nav_bar.classList.toggle("translate-x-0")
+			$x_button_nav_bar.forEach((element, index) => {
+				if (index === 0) {
+					element.classList.toggle("rotate-45")
+				} else {
+					element.classList.toggle("-rotate-45")
+				}
+			})
+		}
+
+		const $button = document.querySelector("button")
+		$button?.addEventListener("click", handleClick)
+	})
+</script>
